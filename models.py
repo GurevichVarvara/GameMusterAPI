@@ -6,3 +6,10 @@ class Platform(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
+
+
+class Genre(db.Model):
+    __tablename__ = 'gameMuster_genre'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
