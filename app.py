@@ -1,13 +1,12 @@
-import os
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from conf import app
 
-app = Flask(__name__.split('.')[0])
-app.config['DEBUG'] = bool(os.environ.get('DEBUG', False))
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+from models import Platform
 
-db = SQLAlchemy(app)
+
+@app.route('/')
+def index():
+    print(Platform.query.order_by(Platform.id).all())
+
 
 if __name__ == '__main__':
     app.run()
