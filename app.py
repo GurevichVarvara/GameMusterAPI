@@ -1,4 +1,4 @@
-from conf import app
+from config import app
 
 from models import Platform
 

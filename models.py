@@ -1,4 +1,4 @@
-from conf import db
+from config import db
 
 
 class Platform(db.Model):
