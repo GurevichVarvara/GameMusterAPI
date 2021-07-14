@@ -1,7 +1,7 @@
 from marshmallow import fields
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 
-from models import Platform, Genre, Game, Screenshot
+from models import Platform, Genre, Game, Screenshot, User
 
 
 class PlatformSerializer(SQLAlchemyAutoSchema):
@@ -29,4 +29,10 @@ class GameSerializer(SQLAlchemyAutoSchema):
 
     class Meta:
         model = Game
+        load_instance = True
+
+
+class UserSerializer(SQLAlchemyAutoSchema):
+    class Meta:
+        model = User
         load_instance = True

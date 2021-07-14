@@ -48,3 +48,13 @@ class Game(db.Model):
                              backref=db.backref('gameMuster_game', lazy=True))
     platforms = db.relationship('Platform', secondary=game_platforms, lazy='subquery',
                                 backref=db.backref('gameMuster_game', lazy=True))
+
+
+class User(db.Model):
+    __tablename__ = 'users_user'
+
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String)
+    birthday = db.Column(db.Date)
+    active_time = db.Column(db.DateTime)
+    unconfirmed_email = db.Column(db.String)
