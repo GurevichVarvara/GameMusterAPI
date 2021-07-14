@@ -38,6 +38,9 @@ class Users(BaseSequenceResource):
     def __init__(self):
         super().__init__(User, UserSerializer())
 
+    def get(self):
+        pass
+
 
 api.add_resource(Platforms, '/api/platforms')
 api.add_resource(SinglePlatform, '/api/platforms/<string:object_id>')
