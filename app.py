@@ -1,3 +1,5 @@
+from flask import request
+
 from base_resources import BaseResource, BaseSequenceResource
 from config import app, api
 from models import Platform, Genre, Game, User
@@ -39,7 +41,9 @@ class Users(BaseSequenceResource):
         super().__init__(User, UserSerializer())
 
     def get(self):
-        pass
+        print(request.headers['Authorization'])
+        print(User.decode_auth_token(request.headers['Authorization']))
+        return super().get()
 
 
 api.add_resource(Platforms, '/api/platforms')
