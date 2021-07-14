@@ -41,9 +41,15 @@ class Users(BaseSequenceResource):
         super().__init__(User, UserSerializer())
 
     def get(self):
-        print(request.headers['Authorization'])
-        print(User.decode_auth_token(request.headers['Authorization']))
-        return super().get()
+        user_id = User.decode_auth_token(request.headers['Authorization'])
+        user = User.query.get(user_id)
+
+        if user.is_staff:
+            result = super().get()
+        else:
+            result = self.serializer.dump(user)
+
+        return result
 
 
 api.add_resource(Platforms, '/api/platforms')
